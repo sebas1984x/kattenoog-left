@@ -1,0 +1,11 @@
+[Unit]
+Description=Jaw (UDP 5006) -> Dynamixel via U2D2
+After=network-online.target
+Wants=network-online.target
+[Service]
+User=cat
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /home/cat/kattenoog/jaw_udp_dynamixel.py --dev /dev/ttyUSB0 --id 1 --baud 57600 --min_deg 20 --max_deg 90 --port 5006
+Restart=always
+[Install]
+WantedBy=multi-user.target

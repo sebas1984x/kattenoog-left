@@ -1,0 +1,14 @@
+[Unit]
+Description=Kattenoog LEFT
+After=network-online.target
+
+[Service]
+User=cat
+WorkingDirectory=/home/cat/kattenoog
+Environment=SDL_VIDEODRIVER=kmsdrm
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+ExecStart=/usr/bin/python3 /home/cat/kattenoog/kattenoog_plc_udp_oneeye.py --eye left --sq 1080 --ox 0 --oy 0
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
